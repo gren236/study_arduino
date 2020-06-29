@@ -1,5 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "AVRISP mkII",
-    "sketch": "chapter2/led_button/led_button.ino"
-}
