@@ -14,13 +14,13 @@ void setup() {
     pinMode(SER, OUTPUT);
     pinMode(RCLK, OUTPUT);
     pinMode(SRCLK, OUTPUT);
-}
+}////////////////////////////////////////
 
 void loop() {
     int distance = analogRead(DIST);
     distance = map(distance, minVal, maxVal, 0, 8);
     distance = constrain(distance, 0, 8);
-
+    
     int val = B00000001;
     for (int i = 0; i < distance; i++) {
         val <<= 1;
