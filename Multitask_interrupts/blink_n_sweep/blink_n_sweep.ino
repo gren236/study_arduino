@@ -13,8 +13,11 @@ void setup()
 
 void loop()
 {
-    sweeper1.Update();
-
-    led1.Update();
+    // Turn off led and sweeper if button is pressed
+    if (digitalRead(2) == HIGH) {
+        sweeper1.Update();
+        led1.Update();
+    }
+    
     led2.Update();
 }
