@@ -6,10 +6,10 @@
 class Sweeper
 {
     Servo servo;
-    int pos;
-    int increment; // increment interval
+    volatile int pos;
+    volatile int increment; // increment interval
     int updateInterval; // interval between updates (ms)
-    unsigned long lastUpdate; // last position update
+    volatile unsigned long lastUpdate; // last position update
 
 public:
     Sweeper(int interval);
@@ -17,6 +17,7 @@ public:
     void Attach(int pin);
     void Detach();
     void Update(unsigned long currentMillis);
+    void Reset();
 };
 
 #endif

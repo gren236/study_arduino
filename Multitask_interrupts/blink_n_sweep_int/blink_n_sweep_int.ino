@@ -6,6 +6,11 @@ Flasher led1(12, 500);
 Flasher led2(13, 1000);
 Sweeper sweeper1(15);
 
+void Reset()
+{
+    sweeper1.Reset();
+}
+
 void setup()
 {
     Serial.begin(9600);
@@ -14,6 +19,8 @@ void setup()
     // Set an interruption
     OCR0A = 0xAF;
     TIMSK0 |= _BV(OCIE0A);
+
+    attachInterrupt(0, Reset, FALLING);
 }
 
 SIGNAL(TIMER0_COMPA_vect)
@@ -21,7 +28,7 @@ SIGNAL(TIMER0_COMPA_vect)
     unsigned long currentMillis = millis();
 
     // Turn off led and sweeper if button is pressed
-    if (digitalRead(2) == HIGH)
+    // if (digitalRead(2) == HIGH)
     {
         sweeper1.Update(currentMillis);
         led1.Update(currentMillis);

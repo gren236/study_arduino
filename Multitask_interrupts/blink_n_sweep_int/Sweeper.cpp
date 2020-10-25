@@ -33,3 +33,10 @@ void Sweeper::Update(unsigned long currentMillis)
         }
     }
 }
+
+void Sweeper::Reset()
+{
+    pos = 0;
+    servo.write(pos);
+    increment = abs(increment);
+}
